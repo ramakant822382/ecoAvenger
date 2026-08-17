@@ -1,16 +1,31 @@
 from transformers import CLIPProcessor, CLIPModel
-from PIL import Image
+import torch
 
-model = CLIPModel.from_pretrained(
-    "openai/clip-vit-base-patch32"
-)
+MODEL_NAME = "openai/clip-vit-base-patch32"
 
-processor = CLIPProcessor.from_pretrained(
-    "openai/clip-vit-base-patch32"
-)
+model = None
+processor = None
+
+
+def load_model():
+    global model, processor
+
+    if model is None:
+        processor = CLIPProcessor.from_pretrained(MODEL_NAME)
+
+        model = CLIPModel.from_pretrained(
+            MODEL_NAME,
+            low_cpu_mem_usage=True
+        )
+
+        model.eval()
+
+    return model, processor
 
 
 def detect_plastic(image):
+
+    model, processor = load_model()
 
     labels = [
         "a plastic bottle",
@@ -27,11 +42,13 @@ def detect_plastic(image):
         padding=True
     )
 
-    outputs = model(**inputs)
+    with torch.inference_mode():
 
-    probabilities = outputs.logits_per_image.softmax(
-        dim=1
-    )[0]
+        outputs = model(**inputs)
+
+        probabilities = outputs.logits_per_image.softmax(
+            dim=1
+        )[0]
 
     index = probabilities.argmax().item()
 
