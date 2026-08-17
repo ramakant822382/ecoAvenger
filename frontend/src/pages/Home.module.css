@@ -1,0 +1,424 @@
+.home {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #f7f9f1;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  overflow: hidden;
+  background: #f8faf3;
+}
+
+/* =========================
+   LEFT CONTENT
+========================= */
+
+.leftContent {
+  position: relative;
+  z-index: 5;
+
+  width: 58%;
+  min-height: 100vh;
+
+  padding: 55px 60px 60px 7%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  background: #f8faf3;
+
+  /* Curved right edge */
+  border-radius: 0 48% 48% 0 / 0 55% 45% 0;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #245d2f;
+
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.logoLeaf {
+  position: relative;
+
+  width: 32px;
+  height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #3d8a35;
+
+  font-size: 36px;
+
+  transform: rotate(-25deg);
+}
+
+/* =========================
+   HEADING
+========================= */
+
+.heading {
+  margin-top: 60px;
+}
+
+.heading h1 {
+  margin: 0;
+
+  color: #245d2f;
+
+  font-size: clamp(52px, 5.2vw, 86px);
+
+  line-height: 1.03;
+
+  font-weight: 800;
+
+  letter-spacing: -3px;
+}
+
+/* =========================
+   GREEN LINE
+========================= */
+
+.line {
+  width: 135px;
+  height: 7px;
+
+  margin-top: 35px;
+  margin-bottom: 28px;
+
+  border-radius: 20px;
+
+  background: #609b3b;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.heading p {
+  margin: 0;
+
+  max-width: 620px;
+
+  color: #1e1e1e;
+
+  font-size: clamp(17px, 1.35vw, 22px);
+
+  line-height: 1.55;
+
+  font-weight: 400;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+  display: flex;
+  gap: 18px;
+
+  margin-top: 35px;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  border: none;
+  padding: 14px 30px;
+
+  border-radius: 30px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.primaryBtn {
+  color: white;
+  background: #286436;
+
+  box-shadow: 0 8px 20px rgba(40, 100, 54, 0.25);
+}
+
+.primaryBtn:hover {
+  background: #1f512b;
+  transform: translateY(-3px);
+}
+
+.secondaryBtn {
+  color: #286436;
+
+  background: transparent;
+
+  border: 2px solid #286436;
+}
+
+.secondaryBtn:hover {
+  color: white;
+  background: #286436;
+
+  transform: translateY(-3px);
+}
+
+/* =========================
+   RIGHT IMAGE
+========================= */
+
+.rightImage {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 58%;
+  height: 100%;
+
+  overflow: hidden;
+
+  z-index: 1;
+}
+
+.rightImage::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(248, 250, 243, 0.95) 0%,
+    rgba(248, 250, 243, 0.2) 18%,
+    transparent 40%
+  );
+}
+
+.rightImage img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: right center;
+
+  display: block;
+
+  filter: saturate(1.05);
+}
+
+/* =========================
+   DECORATIVE LEAVES
+========================= */
+
+.leaf {
+  position: absolute;
+
+  z-index: 10;
+
+  color: #6a9f39;
+
+  font-size: 48px;
+
+  pointer-events: none;
+}
+
+.leafOne {
+  top: 75px;
+  right: 43%;
+
+  transform: rotate(-25deg);
+}
+
+.leafTwo {
+  bottom: 45px;
+  left: 42%;
+
+  font-size: 45px;
+
+  transform: rotate(15deg);
+}
+
+.leafThree {
+  top: 120px;
+  right: 45%;
+
+  font-size: 30px;
+
+  transform: rotate(35deg);
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
+  .leftContent {
+    width: 62%;
+    padding-left: 6%;
+  }
+
+  .rightImage {
+    width: 55%;
+  }
+
+  .heading {
+    margin-top: 45px;
+  }
+
+  .heading h1 {
+    font-size: clamp(48px, 6vw, 70px);
+  }
+
+  .heading p {
+    font-size: 17px;
+  }
+
+  .desktopBreak {
+    display: none;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    flex-direction: column;
+  }
+
+  .leftContent {
+    width: 100%;
+    min-height: auto;
+
+    padding: 35px 25px 55px;
+
+    border-radius: 0;
+
+    background: rgba(248, 250, 243, 0.96);
+  }
+
+  .logo {
+    font-size: 27px;
+  }
+
+  .heading {
+    margin-top: 45px;
+  }
+
+  .heading h1 {
+    font-size: 49px;
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+  }
+
+  .line {
+    width: 100px;
+    height: 6px;
+
+    margin-top: 25px;
+    margin-bottom: 22px;
+  }
+
+  .heading p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .desktopBreak {
+    display: none;
+  }
+
+  .buttons {
+    margin-top: 28px;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    padding: 12px 23px;
+    font-size: 14px;
+  }
+
+  .rightImage {
+    position: relative;
+
+    width: 100%;
+    height: 400px;
+  }
+
+  .rightImage::after {
+    background: linear-gradient(
+      180deg,
+      rgba(248, 250, 243, 0.2),
+      transparent 25%
+    );
+  }
+
+  .leafOne,
+  .leafTwo,
+  .leafThree {
+    display: none;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .leftContent {
+    padding: 28px 20px 45px;
+  }
+
+  .heading {
+    margin-top: 35px;
+  }
+
+  .heading h1 {
+    font-size: 42px;
+  }
+
+  .heading p {
+    font-size: 15px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+  }
+
+  .rightImage {
+    height: 320px;
+  }
+}
