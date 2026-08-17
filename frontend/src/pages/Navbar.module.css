@@ -1,67 +1,76 @@
+/* ================================
+   NAVBAR
+================================ */
+
 .navbar {
   width: 100%;
   height: 72px;
-  padding: 0 7%;
+  padding: 0 6%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  background: #ffffff;
-  border-bottom: 1px solid #e8eee9;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+  position: relative;
+  z-index: 1000;
 
   box-sizing: border-box;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
-.loginBtn,
-.signupBtn {
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease;
 
-  text-decoration: none; /* underline remove */
-  display: inline-block;
-}
-/* Logo */
+/* ================================
+   LOGO
+================================ */
+
 .logo {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 5px;
 
-  font-size: 24px;
-  font-weight: 800;
-  color: #163c25;
+  font-size: 22px;
+  font-weight: 700;
+
+  color: #1f2937;
+  text-decoration: none;
+
   white-space: nowrap;
 }
 
 .logo span {
-  color: #2e9d57;
+  color: #22c55e;
 }
 
-/* Navigation Links */
+/* ================================
+   NAV LINKS
+================================ */
+
 .navLinks {
   display: flex;
   align-items: center;
-  gap: 35px;
+  gap: 32px;
 }
 
 .navLinks a {
   text-decoration: none;
-  color: #405247;
+  color: #374151;
+
   font-size: 15px;
-  font-weight: 600;
-  transition: 0.3s ease;
+  font-weight: 500;
+
+  transition: all 0.25s ease;
 }
 
 .navLinks a:hover {
-  color: #2e9d57;
+  color: #16a34a;
 }
 
-/* Buttons */
+/* ================================
+   ACTION BUTTONS
+================================ */
+
 .navActions {
   display: flex;
   align-items: center;
@@ -70,59 +79,250 @@
 
 .loginBtn,
 .signupBtn {
+  text-decoration: none;
   padding: 10px 20px;
   border-radius: 8px;
+
   font-size: 14px;
   font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease;
+
+  transition: all 0.25s ease;
 }
 
+/* Login */
+
 .loginBtn {
+  color: #16a34a;
+  border: 1px solid #16a34a;
   background: transparent;
-  border: 1px solid #2e9d57;
-  color: #2e9d57;
 }
 
 .loginBtn:hover {
-  background: #eef9f1;
-}
-
-.signupBtn {
-  border: 1px solid #2e9d57;
-  background: #2e9d57;
+  background: #16a34a;
   color: white;
 }
 
-.signupBtn:hover {
-  background: #247d45;
+/* Join Us */
+
+.signupBtn {
+  color: white;
+  background: #22c55e;
+  border: 1px solid #22c55e;
 }
 
-/* Responsive */
+.signupBtn:hover {
+  background: #16a34a;
+  border-color: #16a34a;
+  transform: translateY(-1px);
+}
+
+/* ================================
+   HAMBURGER
+================================ */
+
+.menuBtn {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
+}
+
+.menuBtn span {
+  width: 24px;
+  height: 2px;
+
+  background: #1f2937;
+
+  border-radius: 5px;
+
+  transition: all 0.3s ease;
+}
+
+/* ================================
+   MOBILE ACTIONS
+================================ */
+
+.mobileActions {
+  display: none;
+}
+
+/* ================================
+   TABLET
+================================ */
+
 @media (max-width: 900px) {
   .navbar {
     padding: 0 4%;
   }
 
   .navLinks {
-    gap: 18px;
+    gap: 20px;
   }
 
   .navLinks a {
     font-size: 14px;
   }
+
+  .navActions {
+    gap: 8px;
+  }
+
+  .loginBtn,
+  .signupBtn {
+    padding: 9px 15px;
+  }
 }
 
-@media (max-width: 700px) {
-  .navLinks {
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 65px;
+    padding: 0 20px;
+  }
+
+  /* Logo */
+
+  .logo {
+    font-size: 19px;
+  }
+
+  /* Hide desktop buttons */
+
+  .navActions {
     display: none;
   }
 
+  /* Hamburger */
+
+  .menuBtn {
+    display: flex;
+  }
+
+  /* Mobile menu */
+
+  .navLinks {
+    position: absolute;
+
+    top: 65px;
+    left: 0;
+
+    width: 100%;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 0;
+
+    border-top: 1px solid #eee;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+    transform: translateY(-15px);
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      visibility 0.25s ease;
+  }
+
+  /* Open menu */
+
+  .navLinks.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Links */
+
+  .navLinks a {
+    width: 100%;
+
+    padding: 14px 5px;
+
+    font-size: 16px;
+
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  /* Mobile buttons */
+
+  .mobileActions {
+    display: flex;
+
+    gap: 10px;
+
+    padding-top: 18px;
+  }
+
+  .mobileActions .loginBtn,
+  .mobileActions .signupBtn {
+    flex: 1;
+
+    text-align: center;
+
+    padding: 11px 10px;
+  }
+}
+
+/* ================================
+   SMALL PHONE
+================================ */
+
+@media (max-width: 400px) {
   .navbar {
-    height: 65px;
+    padding: 0 15px;
   }
 
   .logo {
-    font-size: 20px;
+    font-size: 17px;
   }
+
+  .menuBtn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .navLinks {
+    padding: 15px;
+  }
+}
+
+/* ================================
+   HAMBURGER ANIMATION
+================================ */
+
+.menuBtn.menuOpen span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menuBtn.menuOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuBtn.menuOpen span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
