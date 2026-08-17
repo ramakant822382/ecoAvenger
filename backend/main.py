@@ -2,10 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes.auth import router as auth_router
 from fastapi import UploadFile, File
-from PIL import Image
+
 import io
 
-from ml.plastic_detector import detect_plastic
+
 
 # =========================================================
 # FASTAPI APP
@@ -47,18 +47,3 @@ def home():
         "message": "EcoAvenger API is running"
     }
 
-
-@app.post("/plastic/detect")
-async def plastic_detect(
-    file: UploadFile = File(...)
-):
-
-    image_bytes = await file.read()
-
-    image = Image.open(
-        io.BytesIO(image_bytes)
-    ).convert("RGB")
-
-    result = detect_plastic(image)
-
-    return result
